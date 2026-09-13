@@ -1,0 +1,41 @@
+{
+  "name": "aiyla",
+  "version": "0.3.1",
+  "private": true,
+  "description": "Aiyla — a private Windows life and work command centre.",
+  "main": "src/main.cjs",
+  "scripts": {
+    "dev": "electron .",
+    "start": "electron .",
+    "test": "node --test test/*.test.cjs",
+    "package:win:arm64": "electron-builder --win portable --arm64",
+    "package:win:arm64:installer": "electron-builder --win nsis --arm64",
+    "package:win:x64": "electron-builder --win portable --x64",
+    "release:test:arm64": "pnpm test && electron-builder --win nsis --arm64"
+  },
+  "devDependencies": {
+    "electron": "^36.4.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.sagalution.aiyla",
+    "productName": "Aiyla",
+    "asar": true,
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "win": {
+      "artifactName": "${productName} Setup ${version}.${ext}",
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

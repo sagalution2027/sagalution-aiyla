@@ -1,0 +1,12 @@
+AIYLA WINDOWS INSTALLER
+
+1. Extract this ZIP folder first.
+2. Double-click: Aiyla Setup 0.3.1.exe
+3. Follow the installation screens. You can leave the suggested installation location as it is.
+4. When installation finishes, use the Aiyla icon on your desktop or Start Menu.
+
+The file named INSTALL-AIYLA-ARM64.md is only written guidance. It is not an installer.
+
+If Windows displays a blue Microsoft Defender SmartScreen warning, select More info and then Run anyway only if this Aiyla Setup file is the one you downloaded from this conversation.
+
+This installer is for Windows on ARM / Snapdragon laptops.

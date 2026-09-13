@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sagalution Life & Work Command Centre</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell" id="appShell">
+      <aside class="sidebar" aria-label="Sagalution Command Centre navigation">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true"><span></span></div>
+          <div><strong>Sagalution</strong><small>Life &amp; Work Command Centre</small></div>
+        </div>
+        <nav class="nav-list" id="navigation">
+          <button class="nav-item active" data-view="home"><span>✦</span>Home</button>
+          <button class="nav-item" data-view="overview"><span>▦</span>Overview</button>
+          <button class="nav-item" data-view="email"><span>✉</span>Email</button>
+          <button class="nav-item" data-view="calendar"><span>◷</span>Calendar</button>
+          <button class="nav-item" data-view="personal"><span>⌂</span>Personal &amp; Family</button>
+          <button class="nav-item" data-view="australia"><span>🇦🇺</span>Australia Operations</button>
+          <button class="nav-item" data-view="uae"><span>🇦🇪</span>UAE Operations</button>
+          <button class="nav-item" data-view="international"><span>◌</span>International Expansion</button>
+          <button class="nav-item" data-view="projects"><span>◇</span>Projects</button>
+          <button class="nav-item" data-view="computer"><span>▣</span>Computer</button>
+          <button class="nav-item" data-view="browser"><span>◉</span>Browser</button>
+          <button class="nav-item" data-view="working"><span>〽</span>Aiyla Working</button>
+          <button class="nav-item" data-view="history"><span>↺</span>History</button>
+          <button class="nav-item" data-view="connections"><span>⌁</span>Connections</button>
+        </nav>
+        <div class="sidebar-bottom">
+          <button class="talk-anywhere" id="talkAnywhere"><span>✦</span>Talk to Aiyla</button>
+          <button class="nav-item" data-view="settings"><span>⚙</span>Settings</button>
+          <p class="local-note"><span class="status-dot"></span>Aiyla Core is local</p>
+        </div>
+      </aside>
+      <main class="content" id="content" tabindex="-1"></main>
+    </div>
+    <dialog class="app-dialog" id="appDialog"></dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
