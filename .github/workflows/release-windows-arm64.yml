@@ -45,7 +45,7 @@ jobs:
         run: pnpm test
 
       - name: Build assisted Windows ARM64 installer
-        run: pnpm exec electron-builder --win nsis --arm64
+        run: pnpm exec electron-builder --win nsis --arm64 --publish never
 
       - name: Create release checksum
         shell: pwsh
