@@ -1,6 +1,6 @@
 {
   "name": "aiyla",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "private": true,
   "description": "Aiyla — a private Windows life and work command centre.",
   "main": "src/main.cjs",
@@ -18,15 +18,16 @@
     "electron-builder": "^26.0.12"
   },
   "build": {
-    "appId": "com.sagalution.aiyla",
-    "productName": "Aiyla",
+    "appId": "com.sagalution.aiyla.commandcentre",
+    "productName": "Aiyla Command Centre",
     "asar": true,
     "files": [
       "src/**/*",
       "package.json"
     ],
     "win": {
-      "artifactName": "${productName} Setup ${version}.${ext}",
+      "artifactName": "Aiyla Command Centre Setup ${version}.${ext}",
+      "executableName": "Aiyla Command Centre",
       "target": [
         "nsis"
       ]
@@ -34,6 +35,7 @@
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
+      "shortcutName": "Aiyla Command Centre",
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true
     }

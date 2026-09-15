@@ -12,6 +12,12 @@ test("the controlled GitHub workflow builds the tested Windows ARM64 NSIS instal
   assert.match(workflow, /runs-on: windows-latest/);
   assert.match(workflow, /pnpm test/);
   assert.match(workflow, /electron-builder --win nsis --arm64/);
+  assert.match(workflow, /Aiyla Command Centre Setup \*\.exe/);
+  assert.match(workflow, /Validate fresh installer and Command Centre shortcut/);
+  assert.match(workflow, /Aiyla Command Centre\.exe/);
+  assert.match(workflow, /Aiyla Command Centre\.lnk/);
+  assert.match(workflow, /Shortcut target is wrong/);
+  assert.match(workflow, /ARCHIVE\|Aiyla-0\\\.1\\\.0/);
   assert.match(workflow, /if: \$\{\{ inputs\.publish_release == true \}\}/);
   assert.match(workflow, /SHA256SUMS\.txt/);
   assert.match(workflow, /\$releaseAssetName = \$installer\.Name -replace ' ', '\.'/);
