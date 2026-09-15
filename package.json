@@ -37,7 +37,11 @@
       "allowToChangeInstallationDirectory": true,
       "shortcutName": "Aiyla Command Centre",
       "createDesktopShortcut": true,
-      "createStartMenuShortcut": true
+      "createStartMenuShortcut": true,
+      "runAfterFinish": false,
+      "useZip": true,
+      "differentialPackage": false,
+      "script": "build/aiyla-arm64-installer.nsi"
     }
   }
 }
