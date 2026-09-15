@@ -47,11 +47,13 @@ The resulting portable folder/ZIP can be extracted to a normal local folder and 
 
 ## Controlled GitHub Windows release test
 
-The source includes a deliberately **manual-only** GitHub Actions workflow at `.github/workflows/release-windows-arm64.yml`. It creates the normal assisted Windows ARM64 NSIS installer on GitHub's `windows-latest` runner, runs the local tests first, calculates a SHA-256 checksum, and uploads both as workflow artifacts.
+The source includes a deliberately **manual-only** GitHub Actions workflow at `.github/workflows/release-windows-arm64.yml`. It creates the normal assisted Windows ARM64 NSIS installer on GitHub's native `windows-11-arm` runner, runs the local tests first, silently validates a fresh installation and its shortcuts, calculates a SHA-256 checksum, and uploads both as workflow artifacts.
 
 It can create a public GitHub Release only when the repository owner deliberately starts the workflow with **Publish the release** set to `true`. No release is created by an ordinary source push or tag. This is a controlled distribution test based on the prior Ayla delivery method; it is not a substitute for code signing and does not promise that Smart App Control will accept an unknown unsigned release.
 
-The first published test is [Aiyla `v0.3.1-github-test`](https://github.com/sagalution2027/sagalution-aiyla/releases/tag/v0.3.1-github-test). Its direct installer is `Aiyla.Setup.0.3.1.exe` and its published SHA-256 is `c34b866cd98852cedc74b0fbd5319353dc14a892e4fe0cba5b370675e62c7a3f`. The checksum has been downloaded from the release and verified against the installer bytes.
+The initial `v0.3.1-github-test` installer is retained only as an audit record. It exposed an ARM64 payload-selection defect that could create shortcuts without installing the matching app executable; it must not be used for installation.
+
+The repaired current test is [Aiyla `v0.3.2-github-test`](https://github.com/sagalution2027/sagalution-aiyla/releases/tag/v0.3.2-github-test). Its direct installer is `Aiyla.Command.Centre.Setup.0.3.2.exe` and its published SHA-256 is `c8cce2f2496283783bcaad8ed61306066a4aca1c42d419df6a97d695b1981229`. The checksum has been downloaded from the release and verified against the installer bytes. This package is Windows 11 ARM64 only, contains a ZIP-compressed ARM64 payload, verifies the installed executable before reporting completion, and creates distinct `Aiyla Command Centre` desktop and Start Menu shortcuts.
 
 The public repository contains only this lightweight Aiyla source and workflow. It must never contain a user API key, local Core records, account data, Windows credential-store data, certificates, private signing keys, or installer output. The release asset is a direct installer plus `SHA256SUMS.txt`, not a ZIP-wrapped executable.
 

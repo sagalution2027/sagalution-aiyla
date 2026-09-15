@@ -4,7 +4,9 @@ This release is the **Sagalution Life & Work Command Centre Blueprint V2 local p
 
 ## Controlled GitHub installer test
 
-Download the direct ARM64 installer from the [Aiyla `v0.3.1-github-test` GitHub Release](https://github.com/sagalution2027/sagalution-aiyla/releases/tag/v0.3.1-github-test). Select **`Aiyla.Setup.0.3.1.exe`** from the release assets; do not download or extract a ZIP file. Download `SHA256SUMS.txt` as well if you want to perform the optional checksum check below.
+Download the direct ARM64 installer from the [Aiyla `v0.3.2-github-test` GitHub Release](https://github.com/sagalution2027/sagalution-aiyla/releases/tag/v0.3.2-github-test). Select **`Aiyla.Command.Centre.Setup.0.3.2.exe`** from the release assets; do not download or extract a ZIP file. Download `SHA256SUMS.txt` as well if you want to perform the optional checksum check below.
+
+> Do **not** use the earlier `v0.3.1-github-test` setup. Its embedded payload selection could finish setup without creating a working Aiyla app folder. Version `0.3.2` extracts its ARM64 app package directly into the folder selected during setup and checks for the new executable before it can report completion.
 
 This is a deliberately controlled **unsigned** GitHub Actions build. It is a no-cost test of whether this delivery route is accepted by this particular Windows device. It is **not** a code-signing solution and does not claim to bypass or weaken Smart App Control.
 
@@ -15,20 +17,24 @@ Keep **Smart App Control enabled**. If Windows blocks the installer, do **not** 
 The expected SHA-256 value is:
 
 ```text
-c34b866cd98852cedc74b0fbd5319353dc14a892e4fe0cba5b370675e62c7a3f
+c8cce2f2496283783bcaad8ed61306066a4aca1c42d419df6a97d695b1981229
 ```
 
 In PowerShell, run this in the folder containing the download:
 
 ```powershell
-Get-FileHash -Algorithm SHA256 .\Aiyla.Setup.0.3.1.exe
+Get-FileHash -Algorithm SHA256 .\Aiyla.Command.Centre.Setup.0.3.2.exe
 ```
 
 Confirm that the displayed hash matches the value above and the entry in `SHA256SUMS.txt` before opening the installer.
 
 ## Install and open
 
-Double-click `Aiyla.Setup.0.3.1.exe` and follow the assisted setup steps. The installer allows an installation-location choice and creates Start Menu and desktop shortcuts. When Aiyla starts, it appears as a discreet green **Aiyla Ready** desktop Orbit above the Windows taskbar; click it to open the full Command Centre. Closing the main window returns to the Orbit instead of closing the Aiyla process. The larger Home Orbit uses green breathing and circulation motion, becoming more active when Aiyla is thinking or working.
+Double-click `Aiyla.Command.Centre.Setup.0.3.2.exe` and follow the assisted setup steps. The installer allows an installation-location choice and creates the distinct **Aiyla Command Centre** Start Menu and desktop shortcuts. Setup intentionally does **not** start the app automatically when you select Finish. After setup closes, open the new **Aiyla Command Centre** shortcut—not an older shortcut simply named **Aiyla**.
+
+When Aiyla starts, it appears as a discreet green **Aiyla Ready** desktop Orbit above the Windows taskbar; click it to open the full Command Centre. Closing the main window returns to the Orbit instead of closing the Aiyla process. The larger Home Orbit uses green breathing and circulation motion, becoming more active when Aiyla is thinking or working.
+
+Edge may initially say that the EXE is “not commonly downloaded.” That is a browser download-reputation notice, not evidence that setup has completed. Confirm the GitHub release URL and SHA-256 value above before retaining the download; then keep **Smart App Control enabled** and let Windows make its separate install/launch decision. Do not disable or bypass Smart App Control. If it blocks version 0.3.2, capture the full message or screenshot and report it.
 
 ## What to check first
 
