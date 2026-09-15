@@ -59,7 +59,15 @@ jobs:
           if ($installProcess.ExitCode -ne 0) { throw "Silent installer returned exit code $($installProcess.ExitCode)." }
 
           $appPath = Join-Path $installDirectory "Aiyla Command Centre.exe"
-          if (-not (Test-Path -LiteralPath $appPath)) { throw "Installed Aiyla Command Centre executable was not found." }
+          if (-not (Test-Path -LiteralPath $appPath)) {
+            $searchRoots = @($env:RUNNER_TEMP, (Join-Path $env:LOCALAPPDATA 'Programs'), $env:ProgramFiles) | Where-Object { Test-Path -LiteralPath $_ }
+            $locatedApps = Get-ChildItem -Path $searchRoots -Filter 'Aiyla Command Centre.exe' -File -Recurse -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName
+            $candidateDirectories = Get-ChildItem -Path $searchRoots -Directory -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.Name -match 'Aiyla' } | Select-Object -ExpandProperty FullName
+            Write-Host "Expected application path: $appPath"
+            Write-Host "Located Aiyla Command Centre executables: $($locatedApps -join '; ')"
+            Write-Host "Candidate Aiyla directories: $($candidateDirectories -join '; ')"
+            throw "Installed Aiyla Command Centre executable was not found at the requested installation path."
+          }
 
           $startMenuShortcut = Join-Path $env:APPDATA "Microsoft\Windows\Start Menu\Programs\Aiyla Command Centre.lnk"
           if (-not (Test-Path -LiteralPath $startMenuShortcut)) { throw "Aiyla Command Centre Start Menu shortcut was not created." }
