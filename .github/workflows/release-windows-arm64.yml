@@ -55,8 +55,8 @@ jobs:
 
           $installDirectory = Join-Path $env:RUNNER_TEMP "AiylaCommandCentreInstallTest"
           Remove-Item -Path $installDirectory -Recurse -Force -ErrorAction SilentlyContinue
-          & $installer.FullName /S /currentuser "/D=$installDirectory"
-          if ($LASTEXITCODE -ne 0) { throw "Silent installer returned exit code $LASTEXITCODE." }
+          $installProcess = Start-Process -FilePath $installer.FullName -ArgumentList @('/S', '/currentuser', "/D=$installDirectory") -Wait -PassThru
+          if ($installProcess.ExitCode -ne 0) { throw "Silent installer returned exit code $($installProcess.ExitCode)." }
 
           $appPath = Join-Path $installDirectory "Aiyla Command Centre.exe"
           if (-not (Test-Path -LiteralPath $appPath)) { throw "Installed Aiyla Command Centre executable was not found." }

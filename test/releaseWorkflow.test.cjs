@@ -16,6 +16,8 @@ test("the controlled GitHub workflow builds the tested Windows ARM64 NSIS instal
   assert.match(workflow, /Validate fresh installer and Command Centre shortcut/);
   assert.match(workflow, /Aiyla Command Centre\.exe/);
   assert.match(workflow, /Aiyla Command Centre\.lnk/);
+  assert.match(workflow, /Start-Process -FilePath \$installer\.FullName .* -Wait -PassThru/);
+  assert.match(workflow, /\$installProcess\.ExitCode/);
   assert.match(workflow, /Shortcut target is wrong/);
   assert.match(workflow, /ARCHIVE\|Aiyla-0\\\.1\\\.0/);
   assert.match(workflow, /if: \$\{\{ inputs\.publish_release == true \}\}/);
