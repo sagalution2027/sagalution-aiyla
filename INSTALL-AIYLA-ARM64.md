@@ -2,11 +2,33 @@
 
 This release is the **Sagalution Life & Work Command Centre Blueprint V2 local package** for your Windows 11 Snapdragon laptop. It includes Aiyla’s finished local dashboard and Core, with no live account access enabled by default.
 
+## Controlled GitHub installer test
+
+Download the direct ARM64 installer from the [Aiyla `v0.3.1-github-test` GitHub Release](https://github.com/sagalution2027/sagalution-aiyla/releases/tag/v0.3.1-github-test). Select **`Aiyla.Setup.0.3.1.exe`** from the release assets; do not download or extract a ZIP file. Download `SHA256SUMS.txt` as well if you want to perform the optional checksum check below.
+
+This is a deliberately controlled **unsigned** GitHub Actions build. It is a no-cost test of whether this delivery route is accepted by this particular Windows device. It is **not** a code-signing solution and does not claim to bypass or weaken Smart App Control.
+
+Keep **Smart App Control enabled**. If Windows blocks the installer, do **not** disable protection or attempt a bypass. Capture the message or screenshot and report the result; the next route is trusted RSA code signing after a cost/provider decision.
+
+## Verify the download (optional but recommended)
+
+The expected SHA-256 value is:
+
+```text
+c34b866cd98852cedc74b0fbd5319353dc14a892e4fe0cba5b370675e62c7a3f
+```
+
+In PowerShell, run this in the folder containing the download:
+
+```powershell
+Get-FileHash -Algorithm SHA256 .\Aiyla.Setup.0.3.1.exe
+```
+
+Confirm that the displayed hash matches the value above and the entry in `SHA256SUMS.txt` before opening the installer.
+
 ## Install and open
 
-Extract the portable release ZIP to a permanent local folder such as `C:\Users\sagal\Aiyla`. Open `Aiyla.exe` from inside that extracted folder. The app starts as a discreet green **Aiyla Ready** desktop Orbit above the Windows taskbar; click it to open the full Command Centre. Closing the main window returns to the Orbit instead of closing the Aiyla process. The larger Home Orbit uses green breathing and circulation motion, becoming more active when Aiyla is thinking or working.
-
-This is an unsigned personal Windows application. Windows may show a reputation or SmartScreen notice the first time it is opened. Review that the file came from this package and decide whether you wish to run it.
+Double-click `Aiyla.Setup.0.3.1.exe` and follow the assisted setup steps. The installer allows an installation-location choice and creates Start Menu and desktop shortcuts. When Aiyla starts, it appears as a discreet green **Aiyla Ready** desktop Orbit above the Windows taskbar; click it to open the full Command Centre. Closing the main window returns to the Orbit instead of closing the Aiyla process. The larger Home Orbit uses green breathing and circulation motion, becoming more active when Aiyla is thinking or working.
 
 ## What to check first
 

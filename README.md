@@ -51,7 +51,9 @@ The source includes a deliberately **manual-only** GitHub Actions workflow at `.
 
 It can create a public GitHub Release only when the repository owner deliberately starts the workflow with **Publish the release** set to `true`. No release is created by an ordinary source push or tag. This is a controlled distribution test based on the prior Ayla delivery method; it is not a substitute for code signing and does not promise that Smart App Control will accept an unknown unsigned release.
 
-The public repository must contain this lightweight Aiyla source and workflow, but it must never contain a user API key, local Core records, account data, Windows credential-store data, or installer output. The release asset is the direct installer file `Aiyla Setup <version>.exe` plus `SHA256SUMS.txt`, not a ZIP-wrapped executable.
+The first published test is [Aiyla `v0.3.1-github-test`](https://github.com/sagalution2027/sagalution-aiyla/releases/tag/v0.3.1-github-test). Its direct installer is `Aiyla.Setup.0.3.1.exe` and its published SHA-256 is `c34b866cd98852cedc74b0fbd5319353dc14a892e4fe0cba5b370675e62c7a3f`. The checksum has been downloaded from the release and verified against the installer bytes.
+
+The public repository contains only this lightweight Aiyla source and workflow. It must never contain a user API key, local Core records, account data, Windows credential-store data, certificates, private signing keys, or installer output. The release asset is a direct installer plus `SHA256SUMS.txt`, not a ZIP-wrapped executable.
 
 ## Safety model
 
