@@ -14,6 +14,7 @@ test("the controlled GitHub workflow builds the tested Windows ARM64 NSIS instal
   assert.match(workflow, /electron-builder --win nsis --arm64/);
   assert.match(workflow, /if: \$\{\{ inputs\.publish_release == true \}\}/);
   assert.match(workflow, /SHA256SUMS\.txt/);
+  assert.match(workflow, /\$releaseAssetName = \$installer\.Name -replace ' ', '\.'/);
   assert.match(workflow, /gh release create/);
 });
 

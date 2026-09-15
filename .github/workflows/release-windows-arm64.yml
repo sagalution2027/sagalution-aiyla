@@ -53,7 +53,8 @@ jobs:
           $installer = Get-ChildItem -Path dist -Filter "Aiyla Setup *.exe" | Select-Object -First 1
           if (-not $installer) { throw "Expected Aiyla installer was not produced." }
           $hash = (Get-FileHash -Algorithm SHA256 $installer.FullName).Hash.ToLower()
-          "$hash  $($installer.Name)" | Set-Content -NoNewline -Encoding ascii dist/SHA256SUMS.txt
+          $releaseAssetName = $installer.Name -replace ' ', '.'
+          "$hash  $releaseAssetName" | Set-Content -NoNewline -Encoding ascii dist/SHA256SUMS.txt
 
       - name: Upload installer and checksum for review
         uses: actions/upload-artifact@v4
