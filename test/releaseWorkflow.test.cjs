@@ -9,7 +9,7 @@ test("the controlled GitHub workflow builds the tested Windows ARM64 NSIS instal
   const workflow = fs.readFileSync(path.join(sourceRoot, ".github", "workflows", "release-windows-arm64.yml"), "utf8");
   assert.match(workflow, /workflow_dispatch:/);
   assert.doesNotMatch(workflow, /\n\s*push:/);
-  assert.match(workflow, /runs-on: windows-latest/);
+  assert.match(workflow, /runs-on: windows-11-arm/);
   assert.match(workflow, /pnpm test/);
   assert.match(workflow, /electron-builder --win nsis --arm64/);
   assert.match(workflow, /Aiyla Command Centre Setup \*\.exe/);
